@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="co.mcnc.mbmcnc.mapper.UserMapper">
+
+	<resultMap id="UserResultMap" type="co.mcnc.mbmcnc.model.User">
+	<id property="id" column="id"> </id>
+	<result property="username" column="username"></result>
+	<result property="email" column="email"></result>
+	<result property="gender" column="gender"></result>
+	<result property="createAt" column="created_at"></result>
+	
+	<!-- insert users -->
+	<insert id="insert" parameterType="co.mcnc.mbmcnc.model.User">
+	
+	</insert>
+	
+	
+	</resultMap>
+	
+</mapper>

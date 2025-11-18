@@ -9,4 +9,4 @@ spring:
       ddl-auto:update
     show-sql: true		
 mybatis:
-  config-locatio:classpath:mybatis-config.xml
+  config-locatio:classpath: classpath:mappers/*.xml
