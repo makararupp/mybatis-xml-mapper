@@ -1,5 +1,8 @@
 package co.mcnc.mbmcnc.service;
 
-public class UserService {
+import co.mcnc.mbmcnc.model.User;
 
+public interface UserService {
+	User insert(User user);
+	 
 }

@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="co.mcnc.mbmcnc.mapper.UserMapper">
 
 	<resultMap id="UserResultMap" type="co.mcnc.mbmcnc.model.User">
-	<id property="id" column="id"> </id>
-	<result property="username" column="username"></result>
-	<result property="email" column="email"></result>
-	<result property="gender" column="gender"></result>
-	<result property="createAt" column="created_at"></result>
-	
-	<!-- insert users -->
-	<insert id="insert" parameterType="co.mcnc.mbmcnc.model.User">
-	
-	</insert>
-	
-	
+		<id property="id" column="id" />
+		<result property="username" column="username"></result>
+		<result property="email" column="email"></result>
+		<result property="gender" column="gender"></result>
+		<result property="createAt" column="created_at"></result>
 	</resultMap>
-	
+
+	<!-- insert users -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO users (username, email, gender)
+        VALUES (#{username}, #{email}, #{gender})
+	</insert>
+
 </mapper>
