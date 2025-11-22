@@ -5,6 +5,5 @@ import co.mcnc.mbmcnc.model.User;
 
 @Mapper
 public interface UserMapper {
-	int insert(User user);
-	int countByEmail(String eamil);
+	void insert(User user);
 }

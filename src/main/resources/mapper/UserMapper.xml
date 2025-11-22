@@ -4,15 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="co.mcnc.mbmcnc.mapper.UserMapper">
-	<!-- insert users -->
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO users (username, email, gender,creat_at)
-        VALUES (#{username}, #{email}, #{gender}, #{creatAt})
-	</insert>
-	
-	<select id="countByEmail">
-	    SELECT *FROM users
-	    WHERE email = #{email}
-	</select>
 
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT
+		INTO users (username, email, gender,creat_at)
+		VALUES (#{username}, #{email}, #{gender}, #{creatAt})
+	</insert>
 </mapper>
