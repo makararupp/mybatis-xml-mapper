@@ -14,6 +14,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(UserInfoException.class)
 	public ResponseEntity<Map<String, Object>> handleUserInfoException(UserInfoException e) {
+		
 		Map<String, Object> response = new HashMap<>();
 		response.put("status", false);
 		response.put("error", e.getErrorCode().getCode());

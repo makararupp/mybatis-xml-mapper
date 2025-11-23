@@ -17,6 +17,11 @@
 		WHERE email = #{email}
 
 	</select>
-	
-	
+
+	<select id="getUserbyId" parameterType="Long">
+		SELECT * FROM users
+		WHERE id = #{id}
+	</select>
+
+
 </mapper>

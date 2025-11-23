@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User insert(User user) {
 		User isExit = userMapper.findByEmail(user.getEmail());
-		if(isExit !=null) {
-			log.info("{}",isExit.getEmail());
+		if (isExit != null) {
+			log.info("{}", isExit.getEmail());
 			throw new UserInfoException(UserInfoCodeError.USER_INFO_DUPLICATE_EMAIL);
 		}
 		userMapper.insert(user);
@@ -33,4 +33,15 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findByEmail(email);
 	}
 
+	@Override
+	public User getUserById(Long id) {
+		// check condition if user id not found
+		User user = userMapper.getUserbyId(id);
+		if(user == null) {
+			throw new UserInfoException(UserInfoCodeError.USER_INFO_NOT_FOUND);
+		}
+		
+		return user;
+	}
+	
 }
