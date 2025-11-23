@@ -6,4 +6,5 @@ import co.mcnc.mbmcnc.model.User;
 @Mapper
 public interface UserMapper {
 	void insert(User user);
+	User findByEmail(String email);
 }

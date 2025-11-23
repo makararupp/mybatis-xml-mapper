@@ -8,6 +8,13 @@
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT
 		INTO users (username, email, gender,creat_at)
-		VALUES (#{username}, #{email}, #{gender}, #{creatAt})
+		VALUES (#{username},
+		#{email}, #{gender}, #{creatAt})
 	</insert>
+
+	<select id="findByEmail">
+		SELECT * FROM users
+		WHERE email = #{email}
+
+	</select>
 </mapper>
