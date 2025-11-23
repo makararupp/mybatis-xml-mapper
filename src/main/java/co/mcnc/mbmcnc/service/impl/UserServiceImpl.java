@@ -1,5 +1,7 @@
 package co.mcnc.mbmcnc.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,11 +39,16 @@ public class UserServiceImpl implements UserService {
 	public User getUserById(Long id) {
 		// check condition if user id not found
 		User user = userMapper.getUserbyId(id);
-		if(user == null) {
+		if (user == null) {
 			throw new UserInfoException(UserInfoCodeError.USER_INFO_NOT_FOUND);
 		}
-		
 		return user;
 	}
-	
+
+	@Override
+	public List<User> getAllUsers() {
+
+		return userMapper.getAllUsers();
+	}
+
 }

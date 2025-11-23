@@ -20,8 +20,13 @@
 
 	<select id="getUserbyId" parameterType="Long">
 		SELECT * FROM users
-		WHERE id = #{id}
+		WHERE
+		id = #{id}
 	</select>
 
+	<!-- select all users -->
+	<select id="getAllUsers">
+			SELECT * FROM users
+	</select>
 
 </mapper>

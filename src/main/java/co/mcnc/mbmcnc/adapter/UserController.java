@@ -1,6 +1,7 @@
 package co.mcnc.mbmcnc.adapter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,6 +52,19 @@ public class UserController {
 				 
 	   return ResponseEntity.ok(response);
 				
+	}
+	@GetMapping
+	public ResponseEntity<UserInfoBaseCode<List<User>>> getAllUser(){
+		List<User> list = userService.getAllUsers();
+		  UserInfoBaseCode<List<User>> response = UserInfoBaseCode.<List<User>>builder()
+				  .status(true)
+				  .code(HttpStatus.ACCEPTED.value())
+				  .message("users have been found!")
+				  .timeStamp(LocalDateTime.now())
+				  .data(list)
+				  .build();
+	
+		return ResponseEntity.ok(response);
 	}
 
 
