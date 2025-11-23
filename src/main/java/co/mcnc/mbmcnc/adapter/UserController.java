@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +20,20 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping
-	public UserInfoBaseCode<?> create(@RequestBody User user){
- 		User create = userService.insert(user);
- 		
- 		return UserInfoBaseCode.builder()
- 				.status(true)
- 				.code(HttpStatus.OK.value())
- 				.message("user info has been the created")
- 				.timeStamp(LocalDateTime.now())
- 				.data(create)
- 				.build();
+	public ResponseEntity<UserInfoBaseCode<User>> create(@RequestBody User user) {
+
+	    User createdUser = userService.insert(user);
+
+	    UserInfoBaseCode<User> response = UserInfoBaseCode.<User>builder()
+	            .status(true)
+	            .code(HttpStatus.OK.value())
+	            .message("User has been created successfully")
+	            .timeStamp(LocalDateTime.now())
+	            .data(createdUser)
+	            .build();
+
+	    return ResponseEntity.ok(response);
 	}
+
 
 }

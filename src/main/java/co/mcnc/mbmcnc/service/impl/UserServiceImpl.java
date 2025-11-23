@@ -20,21 +20,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User insert(User user) {
 		User isExit = userMapper.findByEmail(user.getEmail());
-		 try {
-			 if(isExit !=null) {
-				 throw new UserInfoException(UserInfoCodeError.USER_INFO_DUPLICATE_EMAIL);
-			 }
-		 }catch (UserInfoException e) {
-			 log.error("user info errors code.",e);
-			 throw e;
+		if(isExit !=null) {
+			log.info("{}",isExit.getEmail());
+			throw new UserInfoException(UserInfoCodeError.USER_INFO_DUPLICATE_EMAIL);
 		}
 		userMapper.insert(user);
 		return user;
 	}
+
 	@Override
 	public User getUserByEmail(String email) {
 		return userMapper.findByEmail(email);
 	}
 
 }
-	

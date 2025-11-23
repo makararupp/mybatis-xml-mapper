@@ -1,5 +1,8 @@
 package co.mcnc.mbmcnc.instant;
 
+import lombok.Getter;
+
+@Getter
 public class UserInfoException extends RuntimeException {
 	private final UserInfoCodeError errorCode;
 
@@ -8,12 +11,4 @@ public class UserInfoException extends RuntimeException {
 		this.errorCode = errorCode;
 	}
 
-	public UserInfoException(UserInfoCodeError errorCode, String customMessage) {
-		super(customMessage);
-		this.errorCode = errorCode;
-	}
-
-	public UserInfoCodeError getErrorCode() {
-		return errorCode;
-	}
 }
