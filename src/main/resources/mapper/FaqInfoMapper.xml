@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.mcnc.mbmcnc.mapper.FaqInfoMapper">
+   <insert id="insertFaqInfo">
+	INSERT INTO faq_info (
+	faq_id,
+	faq_category_code,
+	multilingual_content,
+	attachment_no,
+	status_code,
+	system_timestamp,
+	created_depart,
+	created_by,
+	created_date,
+	created_time,
+	updated_depart,
+	updated_by,
+	updated_date,
+	updated_time
+	) VALUES (
+	#{faqId},
+	#{faqCategoryCode},
+	CAST(#{multilingualContent} AS JSONB),
+	#{attachmentNo},
+	#{statusCode.code},        <!-- If enum has getCode() -->
+	#{systemTimestamp},
+	#{createdDepart},
+	#{createdBy},
+	#{createdDate},
+	#{createdTime},
+	#{updatedDepart},
+	#{updatedBy},
+	#{updatedDate},
+	#{updatedTime}
+	)
+</insert>
+
+</mapper>
