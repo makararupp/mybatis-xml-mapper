@@ -6,10 +6,37 @@
 <mapper namespace="co.mcnc.mbmcnc.mapper.UserMapper">
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		INSERT
-		INTO users (username, email, gender,creat_at)
-		VALUES (#{username},
-		#{email}, #{gender}, #{creatAt})
+		INSERT INTO users (
+		email,
+		gender,
+		username,
+		status_code,
+		system_timestamp,
+		created_depart,
+		created_by,
+		created_date,
+		created_time,
+		updated_depart,
+		updated_by,
+		updated_date,
+		updated_time
+		)
+		VALUES (
+		#{email},
+		#{gender},
+		#{username},
+		#{statusCode},
+		#{systemTimestamp},
+		#{createdDepart},
+		#{createdBy},
+		#{createdDate},
+		#{createdTime},
+		#{updatedDepart},
+		#{updatedBy},
+		#{updatedDate},
+		#{updatedTime}
+		)
+
 	</insert>
 
 	<select id="findByEmail">
@@ -26,7 +53,7 @@
 
 	<!-- select all users -->
 	<select id="getAllUsers">
-			SELECT * FROM users
+		SELECT * FROM users
 	</select>
 
 </mapper>
