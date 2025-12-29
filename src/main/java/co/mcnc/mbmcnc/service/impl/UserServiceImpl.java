@@ -21,6 +21,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User insert(User user) {
+	    //check email already exists
+		User isExit = userMapper.findByEmail(user.getEmail());
+		log.info("{}",isExit);
+		if(isExit!=null) {
+			throw new UserInfoException(UserInfoCodeError.USER_INFO_DUPLICATE_EMAIL);
+		}
 		userMapper.insert(user);
 		return user;
 	}
