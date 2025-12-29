@@ -6,7 +6,8 @@
 <mapper namespace="co.mcnc.mbmcnc.mapper.UserMapper">
 
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO users (
+		INSERT
+		INTO users (
 		email,
 		gender,
 		username,
@@ -26,7 +27,7 @@
 		#{gender},
 		#{username},
 		#{statusCode},
-		#{systemTimestamp},
+		CURRENT_TIMESTAMP,
 		#{createdDepart},
 		#{createdBy},
 		#{createdDate},
