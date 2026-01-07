@@ -1,4 +1,4 @@
-package co.mcnc.mbmcnc.adapter;
+package co.mcnc.mbmcnc.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
