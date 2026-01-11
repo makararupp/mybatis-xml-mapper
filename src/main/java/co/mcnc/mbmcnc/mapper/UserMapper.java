@@ -11,4 +11,5 @@ public interface UserMapper {
 	User findByEmail(String email);
 	User getUserbyId(Long id);
 	List<User> getAllUsers();
+	int updateUserByStatus(Long id, String statusCode);
 }

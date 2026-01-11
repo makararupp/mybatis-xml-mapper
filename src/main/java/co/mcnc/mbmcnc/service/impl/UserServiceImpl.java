@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getAllUsers();
 	}
 
+	@Override
+	public boolean updateStatus(Long id, String statusCode) {
+		int rows = userMapper.updateUserByStatus(id, statusCode);
+		return rows > 0;
+	}
 }

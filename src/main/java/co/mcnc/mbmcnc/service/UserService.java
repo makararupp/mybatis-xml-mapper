@@ -9,4 +9,5 @@ public interface UserService {
 	User getUserByEmail(String emails);
 	User getUserById(Long id);
 	List<User> getAllUsers();
+	boolean updateStatus(Long id, String statusCode);
 }

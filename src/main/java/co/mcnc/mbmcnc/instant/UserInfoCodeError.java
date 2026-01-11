@@ -1,5 +1,6 @@
 package co.mcnc.mbmcnc.instant;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,8 +11,8 @@ public enum UserInfoCodeError {
 	    USER_INFO_MULTIPLE_RECORDS_FOUND("002_MULTIPLE_RECORDS", "Multiple records found for the same email"),
 	    USER_INFO_DATA_CORRUPTION("003_DATA_CORRUPTION", "Database integrity issue detected"),
 	    USER_INFO_NOT_FOUND("004_USER_NOT_FOUND", "User id not found"),
-	    USER_INFO_EMAIL_REQUIRED("005_EMAIL_REQUIRED", "Email is required");
-	    
+	    USER_INFO_EMAIL_REQUIRED("005_EMAIL_REQUIRED", "Email is required"),
+		USER_NOT_FOUND_OR_DISABLED("006_USER_DISABLE", "User has been disabled");
 	    private final String code;
 	    private final String message;
 

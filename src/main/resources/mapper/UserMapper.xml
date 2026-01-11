@@ -45,7 +45,6 @@
 		WHERE email = #{email}
 
 	</select>
-
 	<select id="getUserbyId" parameterType="Long">
 		SELECT * FROM users
 		WHERE
@@ -57,4 +56,13 @@
 		SELECT * FROM users
 	</select>
 
+	<update id="updateUserByStatus">
+		UPDATE users
+		SET
+		status_code = #{statusCode}
+		WHERE id = #{id}
+	</update>
+
 </mapper>
+
+
