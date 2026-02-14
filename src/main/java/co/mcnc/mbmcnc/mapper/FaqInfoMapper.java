@@ -6,6 +6,6 @@ import co.mcnc.mbmcnc.model.FaqInfo;
 
 @Mapper
 public interface FaqInfoMapper {
-	void insertFaqInfo(FaqInfo fInfo);
+	FaqInfo insertFaqInfo(FaqInfo fInfo);
 
 }
