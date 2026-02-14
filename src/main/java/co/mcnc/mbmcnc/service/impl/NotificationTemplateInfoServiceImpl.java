@@ -17,4 +17,18 @@ public class NotificationTemplateInfoServiceImpl implements NotificationTemplate
 		notificationTemplateInfoMapper.insertNotificationTemplateInfo(info);
 	}
 
+	@Override
+	public void updateNotificationTemplateInfo(NotificationTemplateInfo info) {
+		NotificationTemplateInfo existing = notificationTemplateInfoMapper
+				.findNotificationTemplateById(info.getMessageId());
+		if (existing == null) {
+			// Insert if not found
+			notificationTemplateInfoMapper.updateNotificationTemplateInfo(info);
+		} else {
+			// Update if exists
+			notificationTemplateInfoMapper.insertNotificationTemplateInfo(info);
+		}
+
+	}
+
 }
