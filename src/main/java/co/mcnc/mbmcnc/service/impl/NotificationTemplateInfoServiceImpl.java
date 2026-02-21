@@ -2,6 +2,8 @@ package co.mcnc.mbmcnc.service.impl;
 
 import org.springframework.stereotype.Service;
 
+import co.mcnc.mbmcnc.instant.NtcErrorCodeType;
+import co.mcnc.mbmcnc.instant.NtcException;
 import co.mcnc.mbmcnc.mapper.NotificationTemplateInfoMapper;
 import co.mcnc.mbmcnc.model.NotificationTemplateInfo;
 import co.mcnc.mbmcnc.service.NotificationTemplateInfoService;
@@ -19,16 +21,31 @@ public class NotificationTemplateInfoServiceImpl implements NotificationTemplate
 
 	@Override
 	public void updateNotificationTemplateInfo(NotificationTemplateInfo info) {
-		NotificationTemplateInfo existing = notificationTemplateInfoMapper
-				.findNotificationTemplateById(info.getMessageId());
-		if (existing == null) {
-			// Insert if not found
-			notificationTemplateInfoMapper.updateNotificationTemplateInfo(info);
-		} else {
-			// Update if exists
-			notificationTemplateInfoMapper.insertNotificationTemplateInfo(info);
-		}
+		try {
+			NotificationTemplateInfo existing = notificationTemplateInfoMapper
+					.findNotificationTemplateById(info.getMessageId());
 
+			if (existing == null) {
+				// INSERT if not exist
+				int result = notificationTemplateInfoMapper.insertNotificationTemplateInfo(info);
+
+				if (result == 0) {
+					throw new NtcException(NtcErrorCodeType.INSERT_FAILED);
+				}
+
+			} else {
+				// UPDATE if exist
+				int result = notificationTemplateInfoMapper.updateNotificationTemplateInfo(info);
+
+				if (result == 0) {
+					throw new NtcException(NtcErrorCodeType.UPDATE_FAILED);
+				}
+			}
+		} catch (NtcException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new NtcException(NtcErrorCodeType.INTERNAL_ERROR);
+		}
 	}
 
 }
