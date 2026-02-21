@@ -3,54 +3,55 @@
 <mapper
 	namespace="co.mcnc.mbmcnc.mapper.NotificationTemplateInfoMapper">
 	<insert id="insertNotificationTemplateInfo" parameterType="co.mcnc.mbmcnc.model.NotificationTemplateInfo">
-		INSERT INTO notification_template_info (
-		message_id,
-		message_name,
-		notification_category_code,
-		notification_icon,
-		status_code,
-		reference_service_id,
-		deep_link_screen_id
-		) VALUES (
-		#{messageId},
-		#{messageName},
-		#{notificationCategoryCode},
-		#{notificationIcon},
-		#{statusCode},
-		#{referenceServiceId},
-		#{deepLinkScreenId}
-		)
+		INSERT INTO notification_template_info
+            (
+             message_id                ,
+             message_name              ,
+             notification_category_code,
+           	 notification_icon         ,
+             status_code               ,
+             reference_service_id      ,
+             deep_link_screen_id
+            )
+		VALUES
+            (
+             #{messageId}               ,
+             #{messageName}             ,
+             #{notificationCategoryCode},
+             #{notificationIcon}        ,
+             #{statusCode}              ,
+             #{referenceServiceId}      ,
+             #{deepLinkScreenId}
+            )
 	</insert>
 
 	<select id="findNotificationTemplateById" resultType="co.mcnc.mbmcnc.model.NotificationTemplateInfo" parameterType="String">
 		SELECT
-		message_id,
-		message_name,
-		notification_category_code,
-		notification_icon,
-		status_code,
-		reference_service_id,
-		deep_link_screen_id
-		FROM notification_template_info
-		WHERE message_id =
-		#{messageId}
+            message_id                ,
+            message_name              ,
+            notification_category_code,
+            notification_icon         ,
+            status_code               ,
+            reference_service_id      ,
+            deep_link_screen_id
+		FROM
+            notification_template_info
+		WHERE
+            message_id = #{messageId}
 	</select>
 
 	<update id="updateNotificationTemplateInfo" parameterType="co.mcnc.mbmcnc.model.NotificationTemplateInfo">
-
-		UPDATE notification_template_info
+ 		UPDATE
+            notification_template_info
 		SET
-		message_name =
-		#{messageName},
-		notification_category_code =
-		#{notificationCategoryCode},
-		notification_icon = #{notificationIcon},
-		status_code = #{statusCode},
-		reference_service_id =
-		#{referenceServiceId},
-		deep_link_screen_id = #{deepLinkScreenId}
+            message_name               = #{messageName}             ,
+            notification_category_code = #{notificationCategoryCode},
+            notification_icon          = #{notificationIcon}        ,
+            status_code                = #{statusCode}              ,
+            reference_service_id       = #{referenceServiceId}      ,
+            deep_link_screen_id        = #{deepLinkScreenId}
 		WHERE
-		message_id = #{messageId}
+            message_id = #{messageId}
 
 	</update>
 
