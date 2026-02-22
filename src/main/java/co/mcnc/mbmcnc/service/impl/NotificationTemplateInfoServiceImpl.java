@@ -8,9 +8,11 @@ import co.mcnc.mbmcnc.mapper.NotificationTemplateInfoMapper;
 import co.mcnc.mbmcnc.model.NotificationTemplateInfo;
 import co.mcnc.mbmcnc.service.NotificationTemplateInfoService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class NotificationTemplateInfoServiceImpl implements NotificationTemplateInfoService {
 	private final NotificationTemplateInfoMapper notificationTemplateInfoMapper;
 
@@ -22,6 +24,7 @@ public class NotificationTemplateInfoServiceImpl implements NotificationTemplate
 	@Override
 	public void updateNotificationTemplateInfo(NotificationTemplateInfo info) {
 		try {
+
 			NotificationTemplateInfo existing = notificationTemplateInfoMapper
 					.findNotificationTemplateById(info.getMessageId());
 
@@ -44,6 +47,7 @@ public class NotificationTemplateInfoServiceImpl implements NotificationTemplate
 		} catch (NtcException e) {
 			throw e;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new NtcException(NtcErrorCodeType.INTERNAL_ERROR);
 		}
 	}

@@ -27,17 +27,17 @@
 
 	<select id="findNotificationTemplateById" resultType="co.mcnc.mbmcnc.model.NotificationTemplateInfo" parameterType="String">
 		SELECT
-            message_id                ,
-            message_name              ,
-            notification_category_code,
-            notification_icon         ,
-            status_code               ,
-            reference_service_id      ,
-            deep_link_screen_id
+            message_id                 AS "messageId"               ,
+            message_name               AS "messageName"             ,
+            notification_category_code AS "notificationCategoryCode",
+            notification_icon          AS "notificationIcon"        ,
+            status_code                AS "statusCode"              ,
+            reference_service_id       AS "referenceServiceId"      ,
+            deep_link_screen_id        AS "deepLinkScreenId"
 		FROM
             notification_template_info
 		WHERE
-            message_id = #{messageId}
+            message_id = #{messageId}		 
 	</select>
 
 	<update id="updateNotificationTemplateInfo" parameterType="co.mcnc.mbmcnc.model.NotificationTemplateInfo">
